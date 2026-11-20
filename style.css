@@ -199,6 +199,33 @@ html[data-lang="en"] .hl-cap { letter-spacing: -.02em; }
 .card figcaption b, .card .cap b { color: var(--text); font-weight: 600; }
 .card.wide { margin: 5vh auto 0; }
 
+/* 下载卡片（11-20）：平台图标 + 标题 + 系统要求 + 要点 + 大按钮 */
+.dl-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 7vh; }
+.dl-card { position: relative; border-radius: 30px; padding: 52px 48px 44px; text-align: center; overflow: hidden;
+  background: radial-gradient(120% 70% at 50% 0%, rgba(224,122,44,.13) 0%, rgba(224,122,44,0) 60%), linear-gradient(180deg, #17161a 0%, #0f0e10 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.09), 0 40px 90px -40px rgba(0,0,0,.9); }
+.dl-icon { width: 96px; height: 96px; margin: 0 auto 26px; border-radius: 26px; display: grid; place-items: center; color: #fff;
+  background: linear-gradient(160deg, #f0954a 0%, #d46a24 55%, #b9561a 100%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset, 0 18px 50px -8px rgba(224,122,44,.55), 0 0 90px rgba(224,122,44,.25); }
+.dl-icon svg { width: 54px; height: 54px; }
+.dl-title { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 2.4vw, 34px); }
+html[data-lang="zh"] .dl-title { letter-spacing: .02em; }
+.dl-req { margin: 14px 0 0; color: var(--text); opacity: .82; font-size: 17px; font-weight: 500; }
+.dl-card ul { list-style: none; padding: 0; margin: 34px auto 38px; text-align: left; display: grid; gap: 16px; max-width: 30em; }
+.dl-card li { position: relative; padding-left: 22px; color: var(--text-2); font-size: 16px; line-height: 1.5; font-weight: 500; }
+.dl-card li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(224,122,44,.7); }
+.dl-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 240px; padding: 18px 34px; border-radius: 999px; font-size: 18px; font-weight: 600; text-decoration: none;
+  color: #fff; background: linear-gradient(180deg, #ef8f45, #d46a24); box-shadow: 0 14px 40px -10px rgba(224,122,44,.6); }
+.dl-btn[aria-disabled="true"] { background: rgba(255,255,255,.08); color: var(--text-2); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
+
+/* 相机品牌：统一字体的文字标，不用各家 logo */
+.brands { list-style: none; padding: 0; margin: 7vh 0 0; display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.brands li { display: grid; place-items: center; height: 104px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  font: 700 19px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: #a7a19a; transition: color .3s, background .3s; }
+.brands li:hover { color: #fff; background: rgba(255,255,255,.03); }
+.brands li.kc { text-transform: none; letter-spacing: .02em; }
+.fine { margin: 22px 0 0; color: var(--text-3); font-size: 12px; line-height: 1.6; max-width: 60em; }
+
 /* 页脚 */
 footer { border-top: 1px solid var(--line); padding: 28px 0 44px; color: var(--text-3); font-size: 12px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; }
@@ -238,6 +265,8 @@ html.still .reveal { opacity: 1; transform: none; transition: none; }
 
 /* 窄屏 */
 @media (max-width: 900px) {
+  .brands { grid-template-columns: repeat(3, 1fr); }
+  .dl-cards { grid-template-columns: 1fr; }
   .cols, .cards2 { grid-template-columns: 1fr; }
   .stats, .grid-feats, .tabs { grid-template-columns: 1fr 1fr; }
   .hl-card { height: min(64vh, 560px); }
@@ -249,6 +278,10 @@ html.still .reveal { opacity: 1; transform: none; transition: none; }
   .facts div { padding: 16px 0; }
 }
 @media (max-width: 640px) {
+  .dl-card { padding: 40px 24px 34px; border-radius: 24px; }
+  .dl-btn { min-width: 0; width: 100%; }
+  .brands { grid-template-columns: 1fr 1fr; }
+  .brands li { height: 76px; font-size: 15px; }
   .grid-feats { grid-template-columns: 1fr; gap: 22px; }
   .hl-cap { padding: 30px 22px 70px; }
   .hl-card { border-radius: 20px; }
