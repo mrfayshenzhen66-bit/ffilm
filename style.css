@@ -1,5 +1,7 @@
 /* ffilm 官网 · 第三版（11-20）：纯黑底、细字重、克制用色；滚动叙事（底片显影 → 全屏 → 冲洗成修图、逐字点亮、横向胶片条、拼图墙、界面浮起） */
+@font-face { font-family: "ffilm Serif"; src: url("fonts/ffilm-serif-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
 :root {
+  --serif: "ffilm Serif", "Songti SC", "Noto Serif SC", Georgia, serif;
   --bg: #000;
   --bg-2: #0d0d0e;
   --text: #f5f3ef;
@@ -25,11 +27,24 @@ html[data-lang="en"] [lang="zh"], html[data-lang="zh"] [lang="en"] { display: no
 
 /* 字 */
 .eyebrow { font-size: clamp(15px, 1.3vw, 19px); font-weight: 600; color: var(--text-2); letter-spacing: .01em; margin: 0 0 14px; }
-.h1 { font-size: clamp(46px, 6.8vw, 108px); line-height: 1.04; font-weight: 600; margin: 0; }
+.h1 { font-size: clamp(42px, 6vw, 92px); line-height: 1.08; font-weight: 600; margin: 0; }
 .h2 { font-size: clamp(38px, 5.4vw, 80px); line-height: 1.05; font-weight: 600; margin: 0; }
 .h3 { font-size: clamp(28px, 3.4vw, 48px); line-height: 1.1; font-weight: 600; margin: 0; }
-html[data-lang="en"] .h1, html[data-lang="en"] .h2, html[data-lang="en"] .h3 { letter-spacing: -.035em; }
-html[data-lang="zh"] .h1, html[data-lang="zh"] .h2, html[data-lang="zh"] .h3 { letter-spacing: -.01em; }
+/* 标题用衬线（思源宋体子集 ffilm Serif）：有印刷品、暗房的质感；正文仍用苹方 */
+.h1, .h2, .h3, .huge, .lit, .hl-cap, .stats .n, .wm, .doc h1 { font-family: var(--serif); font-weight: 600; }
+html[data-lang="en"] .h1, html[data-lang="en"] .h2, html[data-lang="en"] .h3, html[data-lang="en"] .huge, html[data-lang="en"] .lit, html[data-lang="en"] .hl-cap { letter-spacing: -.015em; }
+html[data-lang="zh"] .h1, html[data-lang="zh"] .h2, html[data-lang="zh"] .h3, html[data-lang="zh"] .huge, html[data-lang="zh"] .lit, html[data-lang="zh"] .hl-cap { letter-spacing: .02em; }
+.stats .n { letter-spacing: -.01em !important; }
+/* 字标：衬线小写 ffilm，ffi 连写 */
+.wm { font-feature-settings: "liga" 1; letter-spacing: -.01em; }
+.brand .wm { font-size: 19px; }
+/* 首屏图标 */
+.hero-icon { width: clamp(84px, 8.4vw, 128px); height: auto; margin: 0 auto 10px; filter: drop-shadow(0 18px 40px rgba(224,122,44,.22)); }
+/* 下载区：大图标 + 大字标 */
+.app-mark { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 4vh; }
+.app-mark img { width: clamp(150px, 16vw, 236px); height: auto; filter: drop-shadow(0 40px 80px rgba(224,122,44,.28)) drop-shadow(0 10px 30px rgba(0,0,0,.6)); }
+.app-mark .wm { font-size: clamp(48px, 5.6vw, 84px); line-height: 1; margin: 0; }
+.app-mark .ver { color: var(--text-2); font-weight: 500; font-size: 15px; margin: 8px 0 0; }
 .lead { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.45; color: var(--text-2); font-weight: 500; margin: 22px 0 0; max-width: 34em; }
 .lead b { color: var(--text); font-weight: 600; }
 /* 渐变白字：上亮下略暗，像相纸上的高光 */
@@ -74,7 +89,6 @@ html[data-lang="zh"] .h1, html[data-lang="zh"] .h2, html[data-lang="zh"] .h3 { l
 .statement .stage { display: grid; place-items: center; }
 .statement .wrap { max-width: 980px; }
 .lit { font-size: clamp(32px, 4.4vw, 64px); line-height: 1.18; font-weight: 600; margin: 0; }
-html[data-lang="en"] .lit { letter-spacing: -.03em; }
 .lit .w { color: #2b2a29; transition: color .5s var(--ease); }
 .lit .w.on { color: var(--text); }
 
@@ -124,7 +138,6 @@ html[data-lang="en"] .lit { letter-spacing: -.03em; }
 
 /* 隐私、下载 */
 .huge { font-size: clamp(56px, 10vw, 160px); line-height: .98; font-weight: 600; margin: 0; }
-html[data-lang="en"] .huge { letter-spacing: -.045em; }
 .platforms { display: flex; justify-content: center; gap: 48px; margin-top: 7vh; flex-wrap: wrap; }
 .platforms div { text-align: center; min-width: 200px; }
 .platforms b { display: block; font-size: 21px; font-weight: 600; }
@@ -184,7 +197,7 @@ html[data-lang="en"] .hl-cap { letter-spacing: -.02em; }
 .card-img img { width: 100%; height: auto; }
 .card figcaption, .card .cap { margin: 18px 4px 0; color: var(--text-2); font-size: 16px; line-height: 1.5; font-weight: 500; max-width: 40em; }
 .card figcaption b, .card .cap b { color: var(--text); font-weight: 600; }
-.card.wide { margin-top: 5vh; }
+.card.wide { margin: 5vh auto 0; }
 
 /* 页脚 */
 footer { border-top: 1px solid var(--line); padding: 28px 0 44px; color: var(--text-3); font-size: 12px; }
