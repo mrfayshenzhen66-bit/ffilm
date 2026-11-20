@@ -12,6 +12,9 @@
   }
   apply(lang);
 
+  // 苹果设备（Mac、iPhone、iPad）才有  字形
+  if (/Mac|iPhone|iPad|iPod/.test(navigator.userAgent || "") || /Mac|iPhone|iPad/.test(navigator.platform || "")) root.classList.add("apple");
+
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (still) root.classList.add("still");
 
