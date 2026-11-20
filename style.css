@@ -223,7 +223,7 @@ html[data-lang="zh"] .dl-title { letter-spacing: .02em; }
 .brands li { display: grid; place-items: center; height: 104px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
   font: 700 19px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: #a7a19a; transition: color .3s, background .3s; }
 .brands li:hover { color: #fff; background: rgba(255,255,255,.03); }
-.brands li.kc { text-transform: none; letter-spacing: .02em; }
+.brands li.kc { text-transform: none; letter-spacing: .02em; display: flex; align-items: center; justify-content: center; gap: .2em; font-size: 21px; color: #b9b3ab; }
 .fine { margin: 22px 0 0; color: var(--text-3); font-size: 12px; line-height: 1.6; max-width: 60em; }
 
 /* 苹果标志：用苹果设备系统字体自带的  字符（U+F8FF）；非苹果设备显示不了，脚本不加 html.apple，回退到自绘设备图标 */
@@ -233,6 +233,15 @@ html.apple .dl-icon svg, html.apple .no-apple { display: none; }
 .dl-icon .apple-mark { font-size: 58px; margin-top: -6px; color: #fff; }
 .brands .apple-mark { font-size: 1.15em; margin-right: .18em; position: relative; top: -.04em; }
 html.apple .brands li.kc { letter-spacing: .01em; }
+
+/* 相机厂 logo（维基共享资源，已清理）：文字标统一白色单色，带底色的标志用灰阶；悬停恢复原色 */
+.brands img.logo { display: block; height: auto; max-width: 70%; filter: brightness(0) invert(1); opacity: .62; transition: filter .35s, opacity .35s; }
+.brands img.logo.badge { filter: grayscale(1) brightness(1.1); opacity: .8; }
+.brands li:hover img.logo { filter: none; opacity: 1; }
+.b-canon { width: 116px; } .b-sony { width: 118px; } .b-fujifilm { width: 132px; } .b-hasselblad { width: 152px; }
+.b-panasonic { width: 132px; } .b-ricoh { width: 118px; } .b-pentax { width: 122px; } .b-dji { width: 62px; }
+.b-nikon { width: 54px; } .b-leica { width: 50px; } .b-om { width: 48px; }
+@media (max-width: 640px) { .b-canon, .b-sony, .b-ricoh, .b-pentax { width: 96px; } .b-fujifilm, .b-panasonic { width: 110px; } .b-hasselblad { width: 124px; } .b-nikon { width: 44px; } .b-leica { width: 40px; } .b-om { width: 40px; } .b-dji { width: 52px; } }
 
 /* 页脚 */
 footer { border-top: 1px solid var(--line); padding: 28px 0 44px; color: var(--text-3); font-size: 12px; }
