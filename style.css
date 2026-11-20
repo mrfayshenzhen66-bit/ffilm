@@ -130,6 +130,62 @@ html[data-lang="en"] .huge { letter-spacing: -.045em; }
 .platforms b { display: block; font-size: 21px; font-weight: 600; }
 .platforms span { color: var(--text-2); font-size: 15px; font-weight: 500; }
 
+/* ---------- 第四版（11-20）：亮点轮播、讲解分栏、大数字、功能小条目、界面分页、图片卡片 ---------- */
+.eyebrow.accent { color: var(--accent); }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 7vh; }
+.cols .lead { margin: 0; max-width: none; font-size: clamp(17px, 1.4vw, 20px); }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 9vh; }
+.stats > div { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--text-2); font-weight: 500; font-size: 15px; }
+.stats .n { font-size: clamp(40px, 4.6vw, 68px); line-height: 1; font-weight: 600; color: var(--text); letter-spacing: -.03em; }
+.stats.big { margin-top: 10vh; }
+.grid-feats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 36px; margin-top: 6vh; }
+.grid-feats > div { color: var(--text-2); font-size: 16px; line-height: 1.5; font-weight: 500; }
+.grid-feats b { color: var(--text); font-weight: 600; margin-right: 4px; }
+.grid-feats.four { margin-top: 9vh; padding-top: 34px; border-top: 1px solid var(--line); }
+
+/* 亮点：横向大卡片，自动播放 */
+.highlights { padding-bottom: 12vh; }
+.hl-head { margin-bottom: 5vh; }
+.hl-track { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding: 0 max(24px, calc((100vw - var(--wrap)) / 2)); scroll-padding: 0 max(24px, calc((100vw - var(--wrap)) / 2)); outline: none; }
+.hl-track::-webkit-scrollbar { display: none; }
+.hl-card { flex: none; width: min(var(--wrap), 88vw); height: min(72vh, 700px); border-radius: 28px; background: #101011; position: relative; overflow: hidden; scroll-snap-align: start; }
+.hl-cap { position: absolute; left: 0; right: 0; top: 0; z-index: 2; margin: 0; padding: 44px 40px 90px; text-align: center; font-size: clamp(20px, 2vw, 28px); line-height: 1.25; font-weight: 600; background: linear-gradient(rgba(0,0,0,.78) 0%, rgba(0,0,0,.45) 55%, rgba(0,0,0,0) 100%); }
+html[data-lang="en"] .hl-cap { letter-spacing: -.02em; }
+.hl-card img.cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hl-card.ui { background: radial-gradient(120% 90% at 50% 100%, #1c1a18 0%, #0b0b0c 70%); }
+.hl-card.ui .hl-cap { background: none; }
+.hl-card.ui img { position: absolute; left: 50%; bottom: 0; height: calc(100% - 150px); width: auto; max-width: 92%; object-fit: cover; object-position: left top; transform: translateX(-50%); border-radius: 12px 12px 0 0; box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 -20px 80px rgba(0,0,0,.6); }
+.hl-ctrl { display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 28px; }
+.dots { display: flex; gap: 10px; align-items: center; padding: 12px 18px; border-radius: 999px; background: rgba(255,255,255,.08); }
+.dots button { width: 8px; height: 8px; border-radius: 99px; border: 0; padding: 0; background: rgba(255,255,255,.35); cursor: pointer; transition: width .4s var(--ease), background .4s; position: relative; overflow: hidden; }
+.dots button.on { width: 44px; background: rgba(255,255,255,.25); }
+.dots button.on i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: #fff; border-radius: 99px; }
+.dots button.on.run i { animation: dotfill var(--hl-ms, 5000ms) linear forwards; }
+@keyframes dotfill { to { width: 100%; } }
+.play { width: 36px; height: 36px; border-radius: 50%; border: 0; background: rgba(255,255,255,.08); cursor: pointer; display: grid; place-items: center; }
+.play i { width: 10px; height: 12px; border-left: 3px solid #fff; border-right: 3px solid #fff; }
+.play.paused i { width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent #fff; margin-left: 3px; }
+
+/* Mac 界面：分页细看 */
+.views { position: relative; }
+.view { position: absolute; inset: 0; opacity: 0; transition: opacity .6s var(--ease); }
+.view.on { position: relative; opacity: 1; }
+.view img { width: 100%; height: auto; }
+.tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 4vh; }
+.tabs button { text-align: left; background: none; border: 0; border-top: 2px solid rgba(255,255,255,.12); padding: 16px 4px 0 0; color: var(--text-2); font: 500 15px/1.45 var(--sans); cursor: pointer; transition: border-color .3s, color .3s; }
+.tabs button b { display: block; color: var(--text-2); font-size: 17px; font-weight: 600; margin-bottom: 4px; transition: color .3s; }
+.tabs button:hover b, .tabs button.on b { color: var(--text); }
+.tabs button.on { border-top-color: var(--text); color: var(--text-2); }
+
+/* 图片卡片 */
+.cards2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 7vh; }
+.card { margin: 0; }
+.card-img { border-radius: 22px; overflow: hidden; background: #101011; box-shadow: 0 0 0 1px rgba(255,255,255,.07); }
+.card-img img { width: 100%; height: auto; }
+.card figcaption, .card .cap { margin: 18px 4px 0; color: var(--text-2); font-size: 16px; line-height: 1.5; font-weight: 500; max-width: 40em; }
+.card figcaption b, .card .cap b { color: var(--text); font-weight: 600; }
+.card.wide { margin-top: 5vh; }
+
 /* 页脚 */
 footer { border-top: 1px solid var(--line); padding: 28px 0 44px; color: var(--text-3); font-size: 12px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; }
@@ -169,6 +225,9 @@ html.still .reveal { opacity: 1; transform: none; transition: none; }
 
 /* 窄屏 */
 @media (max-width: 900px) {
+  .cols, .cards2 { grid-template-columns: 1fr; }
+  .stats, .grid-feats, .tabs { grid-template-columns: 1fr 1fr; }
+  .hl-card { height: min(64vh, 560px); }
   .feats { grid-template-columns: 1fr 1fr; }
   .feat:nth-child(3) { border-left: 0; padding-left: 0; }
   .feat { padding-bottom: 28px; }
@@ -177,6 +236,12 @@ html.still .reveal { opacity: 1; transform: none; transition: none; }
   .facts div { padding: 16px 0; }
 }
 @media (max-width: 640px) {
+  .grid-feats { grid-template-columns: 1fr; gap: 22px; }
+  .hl-cap { padding: 30px 22px 70px; }
+  .hl-card { border-radius: 20px; }
+  .hl-card.ui img { width: 94%; }
+  .tabs button > span { display: none; }
+  .tabs button b { font-size: 14px; }
   .br-m { display: inline; }
   .nav nav { display: none; }
   .lang { margin-left: auto; }

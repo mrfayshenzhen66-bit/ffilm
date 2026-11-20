@@ -39,13 +39,13 @@
         line = el.querySelector(".wipe-line"), head = el.querySelector(".dev-head"), shade = el.querySelector(".shade"),
         negTag = el.querySelector(".neg-tag"), capA = el.querySelector("[data-cap=a]"), capB = el.querySelector("[data-cap=b]"),
         labL = el.querySelector(".dev-label.l"), labR = el.querySelector(".dev-label.r");
-    var g = {}, A = 0.8;   // 照片 4:5
+    var g = {}, A = parseFloat(el.getAttribute("data-aspect")) || 0.8;   // 照片宽高比（首屏现在是 3:2 横幅）
     function layout() {
       var W, H;
       if (vw / vh > A) { W = vw; H = vw / A; } else { H = vh; W = vh * A; }
       var headBottom = head.offsetTop + head.offsetHeight;
       var room = vh - headBottom - vh * .06;              // 标题下面留给小照片的高度
-      var h = clamp(room - vh * .07, vh * .26, vh * .5), w = Math.min(h * A, vw * .64);
+      var h = clamp(room - vh * .07, vh * .26, vh * .5), w = Math.min(h * A, vw * (A > 1 ? .78 : .64));
       h = w / A;
       g = { W: W, H: H, X: (vw - W) / 2, Y: (vh - H) * .3, w: w, h: h, x: (vw - w) / 2, y: headBottom + vh * .05 };
       photo.style.width = W + "px"; photo.style.height = H + "px";
@@ -198,6 +198,56 @@
       window.addEventListener("resize", function () { requestAnimationFrame(relayout); });
       window.addEventListener("load", relayout);
     }
+
+    // 亮点：横向卡片，5 秒自动翻下一张；点圆点跳转，按钮暂停/继续；手动滑动后从当前张继续计时
+    (function () {
+      var track = document.querySelector(".hl-track"); if (!track) return;
+      var cards = Array.prototype.slice.call(track.querySelectorAll(".hl-card"));
+      var dotsBox = document.querySelector(".hl-ctrl .dots"), playBtn = document.querySelector(".hl-ctrl .play");
+      var MS = 5000, idx = 0, playing = !still, timer = null, visible = false;
+      root.style.setProperty("--hl-ms", MS + "ms");
+      var dots = cards.map(function (c, i) {
+        var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", String(i + 1));
+        b.appendChild(document.createElement("i"));
+        b.addEventListener("click", function () { go(i, true); });
+        dotsBox.appendChild(b); return b;
+      });
+      function left(i) { return cards[i].offsetLeft - cards[0].offsetLeft; }
+      function mark() {
+        dots.forEach(function (d, i) { d.classList.toggle("on", i === idx); d.classList.remove("run"); });
+        if (playing && visible) { void dots[idx].offsetWidth; dots[idx].classList.add("run"); }
+      }
+      function schedule() { clearTimeout(timer); if (playing && visible) timer = setTimeout(function () { go((idx + 1) % cards.length); }, MS); }
+      function go(i, user) { idx = i; track.scrollTo({ left: left(i), behavior: "smooth" }); mark(); schedule(); }
+      var st = null;
+      track.addEventListener("scroll", function () {
+        clearTimeout(st);
+        st = setTimeout(function () {   // 停下后按最近的一张对齐计数
+          var x = track.scrollLeft, best = 0, bd = 1e9;
+          cards.forEach(function (c, i) { var d = Math.abs(left(i) - x); if (d < bd) { bd = d; best = i; } });
+          if (best !== idx) { idx = best; mark(); schedule(); }
+        }, 120);
+      }, { passive: true });
+      playBtn.addEventListener("click", function () {
+        playing = !playing; playBtn.classList.toggle("paused", !playing); mark(); schedule();
+      });
+      if (!playing) playBtn.classList.add("paused");
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (es) { visible = es[0].isIntersecting; mark(); schedule(); }, { threshold: .4 }).observe(track);
+      } else { visible = true; }
+      mark(); schedule();
+    })();
+
+    // Mac 界面：点下面的分页切换截图
+    (function () {
+      var tabs = document.querySelectorAll(".tabs button"); if (!tabs.length) return;
+      tabs.forEach(function (t) {
+        t.addEventListener("click", function () {
+          tabs.forEach(function (x) { x.classList.toggle("on", x === t); });
+          document.querySelectorAll(".views .view").forEach(function (v) { v.classList.toggle("on", v.getAttribute("data-view") === t.getAttribute("data-for")); });
+        });
+      });
+    })();
 
     // 普通分节：滚到再淡入上浮
     var els = document.querySelectorAll(".reveal");

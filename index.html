@@ -10,10 +10,10 @@
 <meta name="theme-color" content="#000000">
 <meta property="og:title" content="ffilm">
 <meta property="og:description" content="Light, developed.">
-<meta property="og:image" content="img/hero-edit-s.jpg">
+<meta property="og:image" content="img/hero-film-s.jpg">
 <link rel="icon" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="image" href="img/hero-neg-s.jpg" imagesrcset="img/hero-neg-s.jpg 960w, img/hero-neg.jpg 1920w" imagesizes="100vw">
+<link rel="preload" as="image" href="img/hero-neg-s.jpg" imagesrcset="img/hero-neg-s.jpg 1200w, img/hero-neg.jpg 2400w" imagesizes="100vw">
 <link rel="stylesheet" href="style.css">
 <script src="site.js"></script>
 </head>
@@ -23,9 +23,10 @@
   <div class="wrap">
     <a class="brand" href="./"><img src="img/icon-512.png" alt="">ffilm</a>
     <nav>
-      <a href="#film"><span lang="en">Film</span><span lang="zh">胶片</span></a>
+      <a href="#highlights"><span lang="en">Highlights</span><span lang="zh">亮点</span></a>
+      <a href="#engine"><span lang="en">Film</span><span lang="zh">胶片</span></a>
       <a href="#edit"><span lang="en">Edit</span><span lang="zh">修图</span></a>
-      <a href="#mac"><span lang="en">Mac</span><span lang="zh">Mac 版</span></a>
+      <a href="#finish"><span lang="en">Finishing</span><span lang="zh">收尾</span></a>
       <a href="#privacy"><span lang="en">Privacy</span><span lang="zh">隐私</span></a>
       <a href="#download"><span lang="en">Download</span><span lang="zh">下载</span></a>
     </nav>
@@ -34,8 +35,8 @@
 </header>
 
 <main>
-<!-- 第 1 幕：底片显影、放大成全屏，再冲洗成修图 -->
-<div class="scene dev" id="top">
+<!-- 第 1 幕：彩色负片显影、放大成全屏，再冲洗成修图 -->
+<div class="scene dev" id="top" data-aspect="1.5">
   <div class="stage">
     <div class="dev-head">
       <p class="eyebrow">ffilm</p>
@@ -43,12 +44,12 @@
       <p class="lead"><span lang="en">A photo editor that works the way film does.</span><span lang="zh">一款按胶片成像原理工作的修图 App。</span></p>
     </div>
     <div class="photo">
-      <img class="film" src="img/hero-film-s.jpg" srcset="img/hero-film-s.jpg 960w, img/hero-film.jpg 1920w" sizes="100vw" alt="Black and white print">
+      <img class="film" src="img/hero-film-s.jpg" srcset="img/hero-film-s.jpg 1200w, img/hero-film.jpg 2400w" sizes="100vw" alt="Warm color film print of snow mountains and golden larches">
       <div class="paper"></div>
-      <img class="neg" src="img/hero-neg-s.jpg" srcset="img/hero-neg-s.jpg 960w, img/hero-neg.jpg 1920w" sizes="100vw" alt="">
-      <img class="edit" src="img/hero-edit-s.jpg" srcset="img/hero-edit-s.jpg 960w, img/hero-edit.jpg 1920w" sizes="100vw" alt="Color edit">
+      <img class="neg" src="img/hero-neg-s.jpg" srcset="img/hero-neg-s.jpg 1200w, img/hero-neg.jpg 2400w" sizes="100vw" alt="">
+      <img class="edit" src="img/hero-edit-s.jpg" srcset="img/hero-edit-s.jpg 1200w, img/hero-edit.jpg 2400w" sizes="100vw" alt="The same photo graded in Edit mode">
     </div>
-    <div class="neg-tag tag"><span lang="en">Negative · Frame 1A</span><span lang="zh">底片 · 第 1A 格</span></div>
+    <div class="neg-tag tag"><span lang="en">Color negative · Frame 4A</span><span lang="zh">彩色负片 · 第 4A 格</span></div>
     <div class="shade"></div>
     <div class="wipe-line"></div>
     <div class="dev-cap" data-cap="a">
@@ -56,12 +57,52 @@
     </div>
     <div class="dev-cap" data-cap="b">
       <p class="h3"><span lang="en">One photo. Two ways to develop.</span><span lang="zh">同一张照片，两种冲法。</span></p>
-      <p class="lead"><span lang="en">Film mode — or Edit mode, with no film at all.</span><span lang="zh">也可以不套胶片，直接修原片。</span></p>
+      <p class="lead"><span lang="en">Or skip the film and grade the original.</span><span lang="zh">也可以不套胶片，直接修原片。</span></p>
     </div>
-    <span class="dev-label l tag"><span lang="en">Film · B&amp;W 400</span><span lang="zh">胶片 · 黑白 400</span></span>
-    <span class="dev-label r tag"><span lang="en">Edit · Vivid</span><span lang="zh">修图 · 鲜亮</span></span>
+    <span class="dev-label l tag"><span lang="en">Film · Warm 200</span><span lang="zh">胶片 · 暖调彩负 200</span></span>
+    <span class="dev-label r tag"><span lang="en">Edit · Teal &amp; warm</span><span lang="zh">修图 · 暖青电影</span></span>
   </div>
 </div>
+
+<!-- 一览亮点：大卡片轮播 -->
+<section class="block highlights" id="highlights">
+  <div class="wrap hl-head reveal">
+    <h2 class="h2"><span lang="en">Get the highlights.</span><span lang="zh">一览亮点。</span></h2>
+  </div>
+  <div class="hl-track" tabindex="0" aria-label="Highlights">
+    <article class="hl-card">
+      <p class="hl-cap"><span lang="en">A real film engine.<br>Built from published technical data.</span><span lang="zh">真正的胶片引擎。<br>按厂商公开的技术资料建模。</span></p>
+      <img class="cover" src="img/film-portrait400-s.jpg" srcset="img/film-portrait400-s.jpg 1200w, img/film-portrait400.jpg 2400w" sizes="(max-width: 900px) 88vw, 1100px" alt="" loading="lazy">
+    </article>
+    <article class="hl-card">
+      <p class="hl-cap"><span lang="en">Film mode or Edit mode.<br>Two ways to develop, kept apart.</span><span lang="zh">胶片模式，或者修图模式。<br>两种冲法，互不打扰。</span></p>
+      <img class="cover" src="img/look-teal-warm-s.jpg" srcset="img/look-teal-warm-s.jpg 1200w, img/look-teal-warm.jpg 2400w" sizes="(max-width: 900px) 88vw, 1100px" alt="" loading="lazy">
+    </article>
+    <article class="hl-card">
+      <p class="hl-cap"><span lang="en">16 ready-made recipes.<br>From darkroom B&amp;W to street color.</span><span lang="zh">16 个现成配方。<br>从暗房黑白到街拍彩色。</span></p>
+      <img class="cover" src="img/film-bw400-s.jpg" srcset="img/film-bw400-s.jpg 1200w, img/film-bw400.jpg 2400w" sizes="(max-width: 900px) 88vw, 1100px" alt="" loading="lazy">
+    </article>
+    <article class="hl-card ui">
+      <p class="hl-cap"><span lang="en">Linear, radial and subject masks.<br>Add or subtract to shape them.</span><span lang="zh">线性、径向、主体蒙版。<br>可以相加，也可以相减。</span></p>
+      <img lang="en" src="img/ui-mask-en-s.jpg" srcset="img/ui-mask-en-s.jpg 1440w, img/ui-mask-en.jpg 2880w" sizes="(max-width: 900px) 84vw, 980px" alt="Masks panel" loading="lazy">
+      <img lang="zh" src="img/ui-mask-zh-s.jpg" srcset="img/ui-mask-zh-s.jpg 1440w, img/ui-mask-zh.jpg 2880w" sizes="(max-width: 900px) 84vw, 980px" alt="蒙版面板" loading="lazy">
+    </article>
+    <article class="hl-card ui">
+      <p class="hl-cap"><span lang="en">A date stamp that glows like the real thing.<br>Burned into the film, not pasted on.</span><span lang="zh">日期印记，像真的一样发光。<br>是曝光在底片上的，不是贴上去的。</span></p>
+      <img lang="en" src="img/ui-stamp-en-s.jpg" srcset="img/ui-stamp-en-s.jpg 1440w, img/ui-stamp-en.jpg 2880w" sizes="(max-width: 900px) 84vw, 980px" alt="Date stamp" loading="lazy">
+      <img lang="zh" src="img/ui-stamp-zh-s.jpg" srcset="img/ui-stamp-zh-s.jpg 1440w, img/ui-stamp-zh.jpg 2880w" sizes="(max-width: 900px) 84vw, 980px" alt="日期印记" loading="lazy">
+    </article>
+    <article class="hl-card ui">
+      <p class="hl-cap"><span lang="en">Light Table.<br>Lay out your prints like slides.</span><span lang="zh">观片台。<br>把成片像幻灯片一样摆开。</span></p>
+      <img lang="en" src="img/ui-lighttable-en-s.jpg" srcset="img/ui-lighttable-en-s.jpg 1440w, img/ui-lighttable-en.jpg 2880w" sizes="(max-width: 900px) 84vw, 980px" alt="Light Table" loading="lazy">
+      <img lang="zh" src="img/ui-lighttable-zh-s.jpg" srcset="img/ui-lighttable-zh-s.jpg 1440w, img/ui-lighttable-zh.jpg 2880w" sizes="(max-width: 900px) 84vw, 980px" alt="观片台" loading="lazy">
+    </article>
+  </div>
+  <div class="hl-ctrl">
+    <div class="dots" role="tablist"></div>
+    <button class="play" type="button" aria-label="Pause / 暂停"><i></i></button>
+  </div>
+</section>
 
 <!-- 第 2 幕：逐字点亮 -->
 <div class="scene statement" id="engine">
@@ -72,6 +113,24 @@
     </div>
   </div>
 </div>
+
+<!-- 胶片引擎：讲清楚 + 大数字 -->
+<section class="block">
+  <div class="wrap reveal">
+    <p class="eyebrow accent"><span lang="en">Film engine</span><span lang="zh">胶片引擎</span></p>
+    <h2 class="h2"><span lang="en">Starts at exposure.<br>Just like a real roll.</span><span lang="zh">从曝光开始，<br>像冲一卷真胶片。</span></h2>
+    <div class="cols">
+      <p class="lead"><span lang="en"><b>Light first hits the film.</b> ffilm works out how much each of the three emulsion layers is exposed, follows each film’s characteristic curve to dye density, and lets the layers influence each other the way color negatives do.</span><span lang="zh"><b>光先落在胶片上。</b>ffilm 算出三层乳剂各自受了多少光，按每卷胶片的特性曲线换算成染料密度，再让三层像彩色负片那样相互影响。</span></p>
+      <p class="lead"><span lang="en"><b>Then the darkroom.</b> Print the negative on color or black-and-white paper — or scan it, like a lab would. Grain is derived from published granularity data, and halation can glow around strong light.</span><span lang="zh"><b>然后进暗房。</b>把底片印到彩色或黑白相纸上，也可以像冲扫店那样扫描成数码图。颗粒按公开的颗粒度数据换算，强光周围还能泛起光晕。</span></p>
+    </div>
+    <div class="stats">
+      <div><span class="n">5</span><span><span lang="en">films, color and B&amp;W</span><span lang="zh">卷胶片，彩色与黑白</span></span></div>
+      <div><span class="n">2</span><span><span lang="en">papers, color and B&amp;W</span><span lang="zh">种相纸，彩色与黑白</span></span></div>
+      <div><span class="n">16</span><span><span lang="en">ready-made recipes</span><span lang="zh">个现成配方</span></span></div>
+      <div><span class="n">00–5</span><span><span lang="en">B&amp;W paper grades</span><span lang="zh">号黑白相纸反差</span></span></div>
+    </div>
+  </div>
+</section>
 
 <!-- 第 3 幕：胶片条横向移过 -->
 <div class="scene filmscene" id="film">
@@ -96,6 +155,23 @@
   </div>
 </div>
 
+<!-- 暗房里能调的：功能小条目 -->
+<section class="block">
+  <div class="wrap reveal">
+    <h2 class="h3"><span lang="en">Everything a darkroom gives you.</span><span lang="zh">暗房里有的，这里都有。</span></h2>
+    <div class="grid-feats">
+      <div><b><span lang="en">Auto metering.</span><span lang="zh">自动测光。</span></b><span lang="en">Average, protect highlights, protect shadows or spot — or set it yourself.</span><span lang="zh">平均、保高光、保暗部、点测光，也可以手动。</span></div>
+      <div><b><span lang="en">Print or scan.</span><span lang="zh">印相或扫描。</span></b><span lang="en">Print on paper for depth, or scan the negative for a flatter, wider-latitude look.</span><span lang="zh">印相纸更浓郁，扫描更平、宽容度更大。</span></div>
+      <div><b><span lang="en">Paper grades.</span><span lang="zh">相纸号数。</span></b><span lang="en">Black-and-white paper from grade 00 to 5, soft to hard.</span><span lang="zh">黑白相纸 00 到 5 号，由软到硬。</span></div>
+      <div><b><span lang="en">Toning.</span><span lang="zh">传统调色。</span></b><span lang="en">Selenium and sepia, the classic darkroom tones.</span><span lang="zh">硒调、棕调，暗房里的经典色调。</span></div>
+      <div><b><span lang="en">Grain.</span><span lang="zh">颗粒。</span></b><span lang="en">Derived from each film’s published granularity, not a texture overlay.</span><span lang="zh">按每卷胶片公开的颗粒度换算，不是贴一层纹理。</span></div>
+      <div><b><span lang="en">Halation.</span><span lang="zh">光晕。</span></b><span lang="en">A warm glow around strong light, as it reflects back through the film base.</span><span lang="zh">强光穿过片基又反射回来，周围泛起一圈暖光。</span></div>
+      <div><b><span lang="en">135 or 120.</span><span lang="zh">135 或 120。</span></b><span lang="en">Choose the film format; grain scales with it.</span><span lang="zh">选择画幅，颗粒跟着画幅变化。</span></div>
+      <div><b><span lang="en">Film borders.</span><span lang="zh">片边。</span></b><span lang="en">135 and 120 film edges or a white border, with the frame number you choose.</span><span lang="zh">135、120 底片片边或白边，片号可以自己改。</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- 第 4 幕：全屏一张缩回拼图墙 -->
 <div class="scene mosaic" id="edit">
   <div class="stage">
@@ -116,7 +192,7 @@
   </div>
 </div>
 
-<!-- Mac 界面 -->
+<!-- Mac 界面：分页细看 -->
 <section class="block" id="mac">
   <div class="wrap center reveal">
     <p class="eyebrow"><span lang="en">ffilm for Mac</span><span lang="zh">Mac 版</span></p>
@@ -125,14 +201,35 @@
   </div>
   <div class="wrap shot">
     <div class="win" data-rise>
-      <img lang="en" src="img/ui-filter-en-s.jpg" srcset="img/ui-filter-en-s.jpg 1440w, img/ui-filter-en.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="ffilm on Mac, Filters panel" loading="lazy">
-      <img lang="zh" src="img/ui-filter-zh-s.jpg" srcset="img/ui-filter-zh-s.jpg 1440w, img/ui-filter-zh.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="ffilm Mac 版，滤镜面板" loading="lazy">
+      <div class="views">
+        <div class="view on" data-view="filter">
+          <img lang="en" src="img/ui-filter-en-s.jpg" srcset="img/ui-filter-en-s.jpg 1440w, img/ui-filter-en.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="Filters" loading="lazy">
+          <img lang="zh" src="img/ui-filter-zh-s.jpg" srcset="img/ui-filter-zh-s.jpg 1440w, img/ui-filter-zh.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="滤镜" loading="lazy"></div>
+        <div class="view" data-view="hsl">
+          <img lang="en" src="img/ui-hsl-en-s.jpg" srcset="img/ui-hsl-en-s.jpg 1440w, img/ui-hsl-en.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="HSL targeted adjustment" loading="lazy">
+          <img lang="zh" src="img/ui-hsl-zh-s.jpg" srcset="img/ui-hsl-zh-s.jpg 1440w, img/ui-hsl-zh.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="HSL 目标调整" loading="lazy"></div>
+        <div class="view" data-view="curve">
+          <img lang="en" src="img/ui-curve-en-s.jpg" srcset="img/ui-curve-en-s.jpg 1440w, img/ui-curve-en.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="Curves" loading="lazy">
+          <img lang="zh" src="img/ui-curve-zh-s.jpg" srcset="img/ui-curve-zh-s.jpg 1440w, img/ui-curve-zh.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="曲线" loading="lazy"></div>
+        <div class="view" data-view="mask">
+          <img lang="en" src="img/ui-mask-en-s.jpg" srcset="img/ui-mask-en-s.jpg 1440w, img/ui-mask-en.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="Masks" loading="lazy">
+          <img lang="zh" src="img/ui-mask-zh-s.jpg" srcset="img/ui-mask-zh-s.jpg 1440w, img/ui-mask-zh.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="蒙版" loading="lazy"></div>
+      </div>
     </div>
   </div>
-  <div class="wrap facts reveal">
-    <div><b><span lang="en">Two modes</span><span lang="zh">两种模式</span></b><span lang="en">Film, or Edit with no film.</span><span lang="zh">胶片，或者不套胶片的修图。</span></div>
-    <div><b><span lang="en">Camera RAW</span><span lang="zh">相机 RAW</span></b><span lang="en">Plus HEIC and JPEG.</span><span lang="zh">也支持 HEIC 和 JPEG。</span></div>
-    <div><b><span lang="en">7 languages</span><span lang="zh">7 种语言</span></b><span lang="en">English, Chinese, Japanese, Korean, French, German.</span><span lang="zh">简繁中文、英、日、韩、法、德。</span></div>
+  <div class="wrap tabs" role="tablist">
+    <button class="on" data-for="filter" type="button"><b><span lang="en">Filters</span><span lang="zh">滤镜</span></b><span lang="en">11 looks with adjustable strength.</span><span lang="zh">11 款滤镜，强度可调。</span></button>
+    <button data-for="hsl" type="button"><b><span lang="en">Targeted HSL</span><span lang="zh">HSL 目标调整</span></b><span lang="en">Drag on a color in the photo to adjust it.</span><span lang="zh">在照片上按住一种颜色左右拖，直接调它。</span></button>
+    <button data-for="curve" type="button"><b><span lang="en">Curves</span><span lang="zh">曲线</span></b><span lang="en">RGB curves, a complementary color wheel, one-click cast fix.</span><span lang="zh">RGB 曲线、互补色环对照，一键校正偏色。</span></button>
+    <button data-for="mask" type="button"><b><span lang="en">Masks</span><span lang="zh">蒙版</span></b><span lang="en">Linear, radial and subject — drag them out on the photo.</span><span lang="zh">线性、径向、主体，在照片上直接拖出来。</span></button>
+  </div>
+  <div class="wrap reveal">
+    <div class="grid-feats four">
+      <div><b><span lang="en">Light.</span><span lang="zh">光影。</span></b><span lang="en">Exposure, contrast, highlights, shadows, whites and blacks.</span><span lang="zh">曝光、对比度、高光、阴影、白色、黑色。</span></div>
+      <div><b><span lang="en">Color.</span><span lang="zh">色彩。</span></b><span lang="en">White balance, vibrance and saturation, eight-band HSL.</span><span lang="zh">白平衡、鲜艳度与饱和度，八色 HSL。</span></div>
+      <div><b><span lang="en">Color grading.</span><span lang="zh">色轮。</span></b><span lang="en">Tint shadows, midtones and highlights separately.</span><span lang="zh">阴影、中间调、高光分别调色。</span></div>
+      <div><b><span lang="en">Detail.</span><span lang="zh">细节。</span></b><span lang="en">Sharpening without color fringes, plus vignette.</span><span lang="zh">不出彩边的锐化，还有暗角。</span></div>
+    </div>
   </div>
 </section>
 
@@ -141,20 +238,42 @@
   <div class="wrap reveal">
     <p class="eyebrow"><span lang="en">Finishing</span><span lang="zh">收尾</span></p>
     <h2 class="h2"><span lang="en">From import<br>to export.</span><span lang="zh">从导入，<br>到导出。</span></h2>
-    <div class="feats">
-      <div class="feat"><h3><span lang="en">Crop &amp; masks</span><span lang="zh">裁剪与蒙版</span></h3><p><span lang="en">Crop and straighten. Refine with linear and radial masks.</span><span lang="zh">裁剪、拉直，再用线性和径向蒙版做局部调整。</span></p></div>
-      <div class="feat"><h3><span lang="en">Borders &amp; stamps</span><span lang="zh">片边与印记</span></h3><p><span lang="en">Film borders, photo frames, watermarks and date stamps.</span><span lang="zh">片边、相框、水印、日期印记。</span></p></div>
-      <div class="feat"><h3><span lang="en">Light Table</span><span lang="zh">观片台</span></h3><p><span lang="en">Lay out finished prints like slides on a light box.</span><span lang="zh">把成片像幻灯片一样摆在灯箱上看。</span></p></div>
-      <div class="feat"><h3><span lang="en">Batch export</span><span lang="zh">批量导出</span></h3><p><span lang="en">One photo, or a whole selection at once.</span><span lang="zh">单张导出，或一次导出多张。</span></p></div>
+  </div>
+  <div class="wrap cards2 reveal">
+    <figure class="card">
+      <div class="card-img"><img lang="en" src="img/ui-frame-en-s.jpg" srcset="img/ui-frame-en-s.jpg 1440w, img/ui-frame-en.jpg 2880w" sizes="(max-width: 900px) 92vw, 550px" alt="Photo frame" loading="lazy"><img lang="zh" src="img/ui-frame-zh-s.jpg" srcset="img/ui-frame-zh-s.jpg 1440w, img/ui-frame-zh.jpg 2880w" sizes="(max-width: 900px) 92vw, 550px" alt="相框" loading="lazy"></div>
+      <figcaption><b><span lang="en">Photo frames.</span><span lang="zh">相框。</span></b> <span lang="en">Thin, wide, caption bar or instant-film style, with your own text and shooting details.</span><span lang="zh">细边、宽边、底栏、拍立得，可以写自己的字，排上拍摄参数。</span></figcaption>
+    </figure>
+    <figure class="card">
+      <div class="card-img"><img lang="en" src="img/ui-stamp-en-s.jpg" srcset="img/ui-stamp-en-s.jpg 1440w, img/ui-stamp-en.jpg 2880w" sizes="(max-width: 900px) 92vw, 550px" alt="Date stamp" loading="lazy"><img lang="zh" src="img/ui-stamp-zh-s.jpg" srcset="img/ui-stamp-zh-s.jpg 1440w, img/ui-stamp-zh.jpg 2880w" sizes="(max-width: 900px) 92vw, 550px" alt="日期印记" loading="lazy"></div>
+      <figcaption><b><span lang="en">Date stamps.</span><span lang="zh">日期印记。</span></b> <span lang="en">A film-camera date back, or a CCD-era timestamp. Plus watermarks and signatures.</span><span lang="zh">仿胶片相机的日期后背，或 CCD 数码相机的时间戳；还有水印和签名。</span></figcaption>
+    </figure>
+  </div>
+  <div class="wrap card wide reveal">
+    <div class="card-img"><img lang="en" src="img/ui-lighttable-en-s.jpg" srcset="img/ui-lighttable-en-s.jpg 1440w, img/ui-lighttable-en.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="Light Table" loading="lazy"><img lang="zh" src="img/ui-lighttable-zh-s.jpg" srcset="img/ui-lighttable-zh-s.jpg 1440w, img/ui-lighttable-zh.jpg 2880w" sizes="(max-width: 1168px) 92vw, 1120px" alt="观片台" loading="lazy"></div>
+    <p class="cap"><b><span lang="en">Light Table.</span><span lang="zh">观片台。</span></b> <span lang="en">Every export can land on a glowing light box, sorted into rolls. Arrange, compare, and look closer with a loupe.</span><span lang="zh">导出的成片可以自动放上发光的灯箱，按卷整理；摆一摆、比一比，再用放大镜细看。</span></p>
+  </div>
+  <div class="wrap reveal">
+    <div class="grid-feats four">
+      <div><b><span lang="en">Crop &amp; straighten.</span><span lang="zh">裁剪与拉直。</span></b><span lang="en">Common ratios, rotate and flip; masks follow along.</span><span lang="zh">常用比例、旋转翻转，蒙版跟着走。</span></div>
+      <div><b><span lang="en">Export formats.</span><span lang="zh">导出格式。</span></b><span lang="en">JPEG, HEIC, PNG and 16-bit TIFF.</span><span lang="zh">JPEG、HEIC、PNG、16 位 TIFF。</span></div>
+      <div><b><span lang="en">Batch export.</span><span lang="zh">批量导出。</span></b><span lang="en">One photo, a selection, or the whole library.</span><span lang="zh">单张、多选，或整个图库。</span></div>
+      <div><b><span lang="en">Camera RAW.</span><span lang="zh">相机 RAW。</span></b><span lang="en">Plus HEIC and JPEG, straight from your camera.</span><span lang="zh">也支持 HEIC 和 JPEG，相机原片直接冲。</span></div>
     </div>
   </div>
 </section>
 
-<!-- 隐私 -->
+<!-- 隐私 + 大数字 -->
 <section class="block" id="privacy">
   <div class="wrap center reveal">
     <h2 class="huge sheen"><span lang="en">Your photos<br>stay yours.</span><span lang="zh">照片，<br>只属于你。</span></h2>
     <p class="lead"><span lang="en"><b>Everything happens on your device.</b> No account. No upload. No tracking. No ads.</span><span lang="zh"><b>所有处理都在你的设备上完成。</b>不用注册，不上传，不统计，没有广告。</span></p>
+  </div>
+  <div class="wrap stats big reveal">
+    <div><span class="n">0</span><span><span lang="en">data collected</span><span lang="zh">条数据被收集</span></span></div>
+    <div><span class="n">7</span><span><span lang="en">interface languages</span><span lang="zh">种界面语言</span></span></div>
+    <div><span class="n">16-bit</span><span><span lang="en">TIFF export</span><span lang="zh">TIFF 导出</span></span></div>
+    <div><span class="n">3</span><span><span lang="en">devices: Mac, iPhone, iPad</span><span lang="zh">种设备：Mac、iPhone、iPad</span></span></div>
   </div>
 </section>
 
