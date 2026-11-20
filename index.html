@@ -2,17 +2,18 @@
 <html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ffilm — develop your photos the way film does</title>
 <meta name="title-en" content="ffilm — develop your photos the way film does">
 <meta name="title-zh" content="ffilm — 像冲洗胶片一样冲洗你的照片">
 <meta name="description" content="ffilm is a film-simulation photo editor for Mac, iPhone and iPad. Pick a film, set the exposure, print it on paper. Everything stays on your device.">
-<meta name="theme-color" content="#141315">
+<meta name="theme-color" content="#0e0d0f">
 <meta property="og:title" content="ffilm">
 <meta property="og:description" content="Develop your photos the way film does.">
-<meta property="og:image" content="img/hero-edit.jpg">
+<meta property="og:image" content="img/hero-edit-s.jpg">
 <link rel="icon" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" as="image" href="img/hero-film-s.jpg" imagesrcset="img/hero-film-s.jpg 960w, img/hero-film.jpg 1920w" imagesizes="100vw">
 <link rel="stylesheet" href="style.css">
 <script src="site.js"></script>
 </head>
@@ -22,7 +23,7 @@
   <div class="wrap">
     <a class="brand" href="./"><img src="img/icon-512.png" alt="">ffilm</a>
     <nav>
-      <a href="#film"><span lang="en">Film</span><span lang="zh">胶片</span></a>
+      <a href="#engine"><span lang="en">Film</span><span lang="zh">胶片</span></a>
       <a href="#edit"><span lang="en">Edit</span><span lang="zh">修图</span></a>
       <a href="#finish"><span lang="en">Finishing</span><span lang="zh">收尾</span></a>
       <a href="#download"><span lang="en">Download</span><span lang="zh">下载</span></a>
@@ -32,95 +33,96 @@
 </header>
 
 <main>
-<!-- 首屏 -->
-<div class="hero">
-  <div class="wrap">
-    <div>
-      <div class="edge">ffilm 400<i class="tri"></i>1A</div>
-      <h1>
-        <span lang="en">Develop your photos <em>the way film does.</em></span>
+<!-- 第 1 幕：小照片放大成全屏，再从胶片冲洗成修图 -->
+<div class="scene dev" id="top">
+  <div class="stage">
+    <div class="dev-head">
+      <span class="edge">ffilm 400<i class="tri"></i>1A</span>
+      <h1 class="big">
+        <span lang="en">Develop your photos<br><em>the way film does.</em></span>
         <span lang="zh">像冲洗胶片一样，<br><em>冲洗你的照片。</em></span>
       </h1>
-      <p class="lead">
-        <span lang="en">Pick a film, set the exposure, print it on paper. Or switch to Edit and grade the original. Everything stays on your device.</span>
-        <span lang="zh">选一卷胶片，定好曝光，再印到相纸上。也可以切到修图，直接在原片上调色。照片只在你的设备上处理。</span>
-      </p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#download"><span lang="en">Get ffilm</span><span lang="zh">获取 ffilm</span></a>
-      </div>
-      <div class="meta"><span lang="en">Mac · iPhone · iPad — coming soon</span><span lang="zh">Mac · iPhone · iPad，即将推出</span></div>
     </div>
+    <div class="photo">
+      <img class="film" src="img/hero-film-s.jpg" srcset="img/hero-film-s.jpg 960w, img/hero-film.jpg 1920w" sizes="100vw" alt="Film mode, black and white">
+      <img class="edit" src="img/hero-edit-s.jpg" srcset="img/hero-edit-s.jpg 960w, img/hero-edit.jpg 1920w" sizes="100vw" alt="Edit mode, color">
+    </div>
+    <div class="shade"></div>
+    <div class="wipe-line"></div>
+    <div class="dev-cap" data-cap="a">
+      <p class="mid"><span lang="en">Pick a film. Set the exposure.</span><span lang="zh">选一卷胶片，定好曝光。</span></p>
+      <p class="sub"><span lang="en">Then print it on paper — like a darkroom, on your device.</span><span lang="zh">再把它印到相纸上——一间装在设备里的暗房。</span></p>
+    </div>
+    <div class="dev-cap" data-cap="b">
+      <p class="mid"><span lang="en">One photo. Two ways to develop.</span><span lang="zh">同一张照片，两种冲法。</span></p>
+      <p class="sub"><span lang="en">Switch to Edit and grade the original directly.</span><span lang="zh">切到修图模式，不套胶片，直接调原片。</span></p>
+    </div>
+    <span class="dev-label l edge"><span lang="en">Film · B&amp;W 400</span><span lang="zh">胶片 · 黑白 400</span></span>
+    <span class="dev-label r edge"><span lang="en">Edit · Vivid</span><span lang="zh">修图 · 鲜亮</span></span>
+  </div>
+</div>
 
-    <div class="compare" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Film / Edit">
-      <img src="img/hero-edit.jpg" alt="Edit mode">
-      <img class="top" src="img/hero-film.jpg" alt="Film mode, black and white">
-      <div class="bar"><div class="knob"></div></div>
-      <span class="tag l edge"><span lang="en">Film</span><span lang="zh">胶片</span></span>
-      <span class="tag r edge"><span lang="en">Edit</span><span lang="zh">修图</span></span>
+<!-- 第 2 幕：大字逐字点亮 -->
+<div class="scene statement" id="engine">
+  <div class="stage">
+    <div class="wrap">
+      <div class="kicker edge"><span class="num">01</span><span lang="en">Film engine</span><span lang="zh">胶片引擎</span></div>
+      <p class="lit" lang="en">Not a filter. *A film engine.* ffilm models how film responds to light — the tone curve, color crosstalk between layers, grain and halation — then prints the negative on paper.</p>
+      <p class="lit" lang="zh">不是滤镜，*是胶片引擎。*ffilm 模拟胶片对光的反应——影调曲线、层间色彩、颗粒与光晕——再把底片印到相纸上。</p>
     </div>
   </div>
 </div>
 
-<!-- 胶片 -->
-<section id="film">
-  <div class="wrap reveal">
-    <div class="kicker edge"><span class="num">01</span><span lang="en">Film mode</span><span lang="zh">胶片模式</span></div>
-    <h2><span lang="en">A film engine, not a filter.</span><span lang="zh">是胶片引擎，不是滤镜。</span></h2>
-    <p class="sub">
-      <span lang="en">ffilm models how film responds to light — its tone curve, the color crosstalk between layers, grain and halation — and how the negative is printed on paper or scanned. Grain is derived from published technical data.</span>
-      <span lang="zh">ffilm 模拟胶片对光的反应——影调曲线、层间色彩影响、颗粒与光晕——以及底片印到相纸上、或冲洗后扫描的过程。颗粒按厂商公开的技术资料换算。</span>
-    </p>
-  </div>
-  <div class="wrap reveal">
-    <div class="strip">
-      <div class="frames">
-        <div class="frame"><img src="img/film-bw400.jpg" alt="" loading="lazy"><div class="edge"><span>ffilm 400</span><span><i class="tri"></i>1A</span></div></div>
-        <div class="frame"><img src="img/film-portrait400.jpg" alt="" loading="lazy"><div class="edge"><span>ffilm 400</span><span><i class="tri"></i>2A</span></div></div>
-        <div class="frame"><img src="img/film-fine100.jpg" alt="" loading="lazy"><div class="edge"><span>ffilm 100</span><span><i class="tri"></i>3A</span></div></div>
-        <div class="frame"><img src="img/film-warm200.jpg" alt="" loading="lazy"><div class="edge"><span>ffilm 200</span><span><i class="tri"></i>4A</span></div></div>
-        <div class="frame"><img src="img/film-everyday400.jpg" alt="" loading="lazy"><div class="edge"><span>ffilm 400</span><span><i class="tri"></i>5A</span></div></div>
-      </div>
+<!-- 第 3 幕：胶片条横向移过 -->
+<div class="scene filmscene" id="film">
+  <div class="stage">
+    <div class="wrap film-title">
+      <div class="kicker edge"><span class="num">02</span><span lang="en">Film mode</span><span lang="zh">胶片模式</span></div>
+      <h2 class="mid"><span lang="en">Five films. Each with its own character.</span><span lang="zh">五卷胶片，各有各的脾气。</span></h2>
     </div>
-    <div class="film-names">
-      <div><b><span lang="en">B&amp;W 400</span><span lang="zh">黑白 400</span></b><span lang="en">Classic black and white</span><span lang="zh">经典黑白</span></div>
-      <div><b><span lang="en">Portrait 400</span><span lang="zh">人像彩负 400</span></b><span lang="en">Soft, natural skin</span><span lang="zh">柔和、肤色自然</span></div>
-      <div><b><span lang="en">Fine grain 100</span><span lang="zh">细颗粒彩负 100</span></b><span lang="en">Crisp, saturated</span><span lang="zh">锐利、饱和</span></div>
-      <div><b><span lang="en">Warm 200</span><span lang="zh">暖调彩负 200</span></b><span lang="en">Golden everyday color</span><span lang="zh">暖黄的日常色</span></div>
-      <div><b><span lang="en">Everyday 400</span><span lang="zh">日常彩负 400</span></b><span lang="en">Fresh greens</span><span lang="zh">清新的绿</span></div>
+    <div class="track">
+      <figure class="frame"><img src="img/film-bw400-s.jpg" srcset="img/film-bw400-s.jpg 1200w, img/film-bw400.jpg 2400w" sizes="(max-width: 640px) 80vw, 64vw" alt="" loading="lazy">
+        <figcaption><b><span lang="en">B&amp;W 400</span><span lang="zh">黑白 400</span><span class="d"><span lang="en">Classic black and white</span><span lang="zh">经典黑白</span></span></b><span class="edge">ffilm 400<i class="tri"></i>1A</span></figcaption></figure>
+      <figure class="frame"><img src="img/film-portrait400-s.jpg" srcset="img/film-portrait400-s.jpg 1200w, img/film-portrait400.jpg 2400w" sizes="(max-width: 640px) 80vw, 64vw" alt="" loading="lazy">
+        <figcaption><b><span lang="en">Portrait 400</span><span lang="zh">人像彩负 400</span><span class="d"><span lang="en">Soft, natural tones</span><span lang="zh">柔和、色调自然</span></span></b><span class="edge">ffilm 400<i class="tri"></i>2A</span></figcaption></figure>
+      <figure class="frame"><img src="img/film-fine100-s.jpg" srcset="img/film-fine100-s.jpg 1200w, img/film-fine100.jpg 2400w" sizes="(max-width: 640px) 80vw, 64vw" alt="" loading="lazy">
+        <figcaption><b><span lang="en">Fine grain 100</span><span lang="zh">细颗粒彩负 100</span><span class="d"><span lang="en">Crisp and saturated</span><span lang="zh">锐利、饱和</span></span></b><span class="edge">ffilm 100<i class="tri"></i>3A</span></figcaption></figure>
+      <figure class="frame"><img src="img/film-warm200-s.jpg" srcset="img/film-warm200-s.jpg 1200w, img/film-warm200.jpg 2400w" sizes="(max-width: 640px) 80vw, 64vw" alt="" loading="lazy">
+        <figcaption><b><span lang="en">Warm 200</span><span lang="zh">暖调彩负 200</span><span class="d"><span lang="en">Golden everyday color</span><span lang="zh">暖黄的日常色</span></span></b><span class="edge">ffilm 200<i class="tri"></i>4A</span></figcaption></figure>
+      <figure class="frame"><img src="img/film-everyday400-s.jpg" srcset="img/film-everyday400-s.jpg 1200w, img/film-everyday400.jpg 2400w" sizes="(max-width: 640px) 80vw, 64vw" alt="" loading="lazy">
+        <figcaption><b><span lang="en">Everyday 400</span><span lang="zh">日常彩负 400</span><span class="d"><span lang="en">Fresh greens</span><span lang="zh">清新的绿</span></span></b><span class="edge">ffilm 400<i class="tri"></i>5A</span></figcaption></figure>
     </div>
+    <div class="wrap film-meta edge"><span lang="en">5 films · 2 papers · 16 recipes · scan or print</span><span lang="zh">5 卷胶片 · 2 种相纸 · 16 个配方 · 印相或扫描</span></div>
   </div>
-  <div class="wrap reveal" style="margin-top:40px">
-    <div class="edge"><span lang="en">5 films · 2 papers · 16 recipes · scan or print</span><span lang="zh">5 卷胶片 · 2 种相纸 · 16 个配方 · 印相或扫描</span></div>
-  </div>
-</section>
+</div>
 
-<!-- 修图 -->
-<section id="edit">
-  <div class="wrap reveal">
-    <div class="kicker edge"><span class="num">02</span><span lang="en">Edit mode</span><span lang="zh">修图模式</span></div>
-    <h2><span lang="en">Or skip the film and grade the original.</span><span lang="zh">也可以不套胶片，直接调原片。</span></h2>
-    <p class="sub">
-      <span lang="en">11 filters with adjustable strength, plus light, color, HSL, curves, color wheels, sharpening and vignette.</span>
-      <span lang="zh">11 款滤镜，强度可调；另有光影、色彩、HSL、曲线、色轮、锐化、暗角。</span>
-    </p>
-  </div>
-  <div class="wrap reveal">
-    <div class="looks">
-      <figure class="look"><img src="img/look-teal-warm.jpg" alt="" loading="lazy"><figcaption><span><span lang="en">Teal &amp; warm</span><span lang="zh">暖青电影</span></span><span class="edge">01</span></figcaption></figure>
-      <figure class="look"><img src="img/look-golden-autumn.jpg" alt="" loading="lazy"><figcaption><span><span lang="en">Golden autumn</span><span lang="zh">晨光金秋</span></span><span class="edge">02</span></figcaption></figure>
-      <figure class="look"><img src="img/look-deep-light.jpg" alt="" loading="lazy"><figcaption><span><span lang="en">Chiaroscuro</span><span lang="zh">大光影</span></span><span class="edge">03</span></figcaption></figure>
-      <figure class="look"><img src="img/look-moss.jpg" alt="" loading="lazy"><figcaption><span><span lang="en">Moss</span><span lang="zh">墨绿</span></span><span class="edge">04</span></figcaption></figure>
-      <figure class="look"><img src="img/look-vivid.jpg" alt="" loading="lazy"><figcaption><span><span lang="en">Vivid</span><span lang="zh">鲜亮</span></span><span class="edge">05</span></figcaption></figure>
+<!-- 第 4 幕：全屏一张缩回拼图墙 -->
+<div class="scene mosaic" id="edit">
+  <div class="stage">
+    <div class="wrap m-head">
+      <div class="kicker edge"><span class="num">03</span><span lang="en">Edit mode</span><span lang="zh">修图模式</span></div>
+      <h2 class="mid"><span lang="en">11 filters. Every slider you expect.</span><span lang="zh">11 款滤镜，该有的调整都有。</span></h2>
+    </div>
+    <div class="wrap m-grid">
+      <figure class="tile a"><img src="img/look-golden-autumn-s.jpg" srcset="img/look-golden-autumn-s.jpg 1200w, img/look-golden-autumn.jpg 2400w" sizes="34vw" alt="" loading="lazy"><figcaption><span lang="en">Golden autumn</span><span lang="zh">晨光金秋</span></figcaption></figure>
+      <figure class="tile b"><img src="img/look-vivid-s.jpg" srcset="img/look-vivid-s.jpg 1200w, img/look-vivid.jpg 2400w" sizes="34vw" alt="" loading="lazy"><figcaption><span lang="en">Vivid</span><span lang="zh">鲜亮</span></figcaption></figure>
+      <figure class="tile c"><img src="img/look-teal-warm-s.jpg" srcset="img/look-teal-warm-s.jpg 1200w, img/look-teal-warm.jpg 2400w" sizes="100vw" alt="" loading="lazy"><figcaption><span lang="en">Teal &amp; warm</span><span lang="zh">暖青电影</span></figcaption></figure>
+      <figure class="tile d"><img src="img/look-deep-light-s.jpg" srcset="img/look-deep-light-s.jpg 1200w, img/look-deep-light.jpg 2400w" sizes="34vw" alt="" loading="lazy"><figcaption><span lang="en">Chiaroscuro</span><span lang="zh">大光影</span></figcaption></figure>
+      <figure class="tile e"><img src="img/look-moss-s.jpg" srcset="img/look-moss-s.jpg 1200w, img/look-moss.jpg 2400w" sizes="34vw" alt="" loading="lazy"><figcaption><span lang="en">Moss</span><span lang="zh">墨绿</span></figcaption></figure>
+    </div>
+    <div class="m-intro">
+      <p class="mid"><span lang="en">Or skip the film entirely.</span><span lang="zh">也可以完全不套胶片。</span></p>
+      <p class="sub"><span lang="en">Light, color, HSL, curves, color wheels, sharpening, vignette.</span><span lang="zh">光影、色彩、HSL、曲线、色轮、锐化、暗角。</span></p>
     </div>
   </div>
-</section>
+</div>
 
 <!-- 收尾 -->
-<section id="finish">
+<section class="plain" id="finish">
   <div class="wrap reveal">
-    <div class="kicker edge"><span class="num">03</span><span lang="en">Finishing</span><span lang="zh">收尾</span></div>
-    <h2><span lang="en">From import to export, in one place.</span><span lang="zh">从导入到导出，一个 App 做完。</span></h2>
-    <p class="sub"><span lang="en">Works with camera RAW, HEIC and JPEG.</span><span lang="zh">支持相机 RAW、HEIC、JPEG。</span></p>
+    <div class="kicker edge"><span class="num">04</span><span lang="en">Finishing</span><span lang="zh">收尾</span></div>
+    <h2 class="big"><span lang="en">From import<br>to <em>export.</em></span><span lang="zh">从导入，<br>到<em>导出。</em></span></h2>
+    <p class="sub"><span lang="en">Camera RAW, HEIC and JPEG — all in one app.</span><span lang="zh">相机 RAW、HEIC、JPEG，一个 App 做完。</span></p>
     <div class="features">
       <div class="feature">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 2v16h16M2 6h16v16"/></svg>
@@ -147,12 +149,12 @@
 </section>
 
 <!-- 隐私 -->
-<section>
+<section class="plain">
   <div class="wrap privacy reveal">
     <div>
-      <div class="kicker edge"><span class="num">04</span><span lang="en">Privacy</span><span lang="zh">隐私</span></div>
-      <h2><span lang="en">Your photos never leave your device.</span><span lang="zh">照片不离开你的设备。</span></h2>
-      <p class="sub" style="margin-bottom:0"><span lang="en">No account, no upload, no tracking, no ads.</span><span lang="zh">不用注册，不上传，不统计，没有广告。</span></p>
+      <div class="kicker edge"><span class="num">05</span><span lang="en">Privacy</span><span lang="zh">隐私</span></div>
+      <h2 class="big"><span lang="en">Your photos<br>stay <em>yours.</em></span><span lang="zh">照片<br>只属于<em>你。</em></span></h2>
+      <p class="sub"><span lang="en">No account, no upload, no tracking, no ads.</span><span lang="zh">不用注册，不上传，不统计，没有广告。</span></p>
     </div>
     <ul>
       <li><span class="edge">01</span><span><span lang="en">All processing happens on your Mac, iPhone or iPad.</span><span lang="zh">所有处理都在你的 Mac、iPhone 或 iPad 上完成。</span></span></li>
@@ -163,11 +165,11 @@
 </section>
 
 <!-- 下载 -->
-<section id="download">
+<section class="plain" id="download">
   <div class="wrap reveal">
-    <div class="kicker edge"><span class="num">05</span><span lang="en">Download</span><span lang="zh">下载</span></div>
-    <h2><span lang="en">Get ffilm.</span><span lang="zh">下载 ffilm。</span></h2>
-    <div class="downloads" style="margin-top:36px">
+    <div class="kicker edge"><span class="num">06</span><span lang="en">Download</span><span lang="zh">下载</span></div>
+    <h2 class="big"><span lang="en">Get <em>ffilm.</em></span><span lang="zh">获取 <em>ffilm。</em></span></h2>
+    <div class="downloads">
       <div class="dl soon">
         <div class="edge">macOS</div>
         <h3><span lang="en">ffilm for Mac</span><span lang="zh">ffilm Mac 版</span></h3>
