@@ -252,6 +252,42 @@
       });
     })();
 
+    // 修复前后对比：拖动 / 键盘改 --pos；第一次滚到时轻轻扫一下提示可以拖（减少动态效果时不扫，一碰就停）
+    document.querySelectorAll(".ba").forEach(function (ba) {
+      var range = ba.querySelector(".ba-range"), touched = false, raf = 0;
+      function set(v) { ba.style.setProperty("--pos", v + "%"); }
+      function stop() { touched = true; cancelAnimationFrame(raf); }
+      function fromX(x) { var r = ba.getBoundingClientRect(); var v = Math.min(Math.max((x - r.left) / r.width * 100, 0), 100); set(v); range.value = v; }
+      range.addEventListener("input", function () { stop(); set(range.value); });
+      range.addEventListener("keydown", stop);
+      var drag = null;   // 鼠标按下就跟；手指要横着动了才跟（竖着划交给页面滚动，touch-action: pan-y）
+      ba.addEventListener("pointerdown", function (e) {
+        stop(); drag = e.pointerId; ba.setPointerCapture(e.pointerId);
+        if (e.pointerType === "mouse") fromX(e.clientX);
+      });
+      ba.addEventListener("pointermove", function (e) { if (drag === e.pointerId) fromX(e.clientX); });
+      ["pointerup", "pointercancel"].forEach(function (n) { ba.addEventListener(n, function () { drag = null; }); });
+      if (still || !("IntersectionObserver" in window)) return;
+      var io = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return;
+        io.disconnect();
+        var keys = [[0, 50], [900, 80], [2100, 22], [3000, 50]], t0 = null;   // 毫秒 → 位置
+        function ease(x) { return x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; }
+        function step(ts) {
+          if (touched) return;
+          if (t0 === null) t0 = ts;
+          var t = ts - t0, i = 1;
+          while (i < keys.length - 1 && t > keys[i][0]) i++;
+          var a = keys[i - 1], b = keys[i], k = Math.min(Math.max((t - a[0]) / (b[0] - a[0]), 0), 1);
+          var v = a[1] + (b[1] - a[1]) * ease(k);
+          set(v); range.value = v;
+          if (t < keys[keys.length - 1][0]) raf = requestAnimationFrame(step);
+        }
+        setTimeout(function () { raf = requestAnimationFrame(step); }, 500);
+      }, { threshold: .6 });
+      io.observe(ba);
+    });
+
     // 普通分节：滚到再淡入上浮
     var els = document.querySelectorAll(".reveal");
     if (still || !("IntersectionObserver" in window)) { els.forEach(function (el) { el.classList.add("in"); }); return; }
